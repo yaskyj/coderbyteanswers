@@ -1,3 +1,44 @@
+//Run Length
+function RunLength(str) { 
+  var theArray = str.split('');
+  var ansArray = [];
+  var count = 1;
+  for (var i = 0; i < theArray.length; i++) {
+    if (theArray[i] == theArray[i+1] && theArray[i] !== theArray[i-1]) {
+      count++;
+    } else if (theArray[i] == theArray[i+1] && theArray[i] == theArray[i-1]) {
+      count++;
+    } else if (theArray[i] !== theArray[i+1] && theArray[i] == theArray[i-1]) {
+      ansArray.push(count);
+      ansArray.push(theArray[i]);
+      count = 1;
+    } else {
+      ansArray.push(count);
+      ansArray.push(theArray[i]);
+    }
+  }
+  return ansArray.join('');
+         
+}
+
+//Check Fibonacci
+function FibonacciChecker(num) { 
+  var first = 0;
+  var second = 1;
+  var temp;
+  while (first <= num) {
+    if (first == num) {
+      return 'yes'
+    }
+    temp = first + second;
+    first = second;
+    second = temp;
+  }
+  // code goes here  
+  return 'no'; 
+         
+}
+
 //Greatest common factor
 function gcd(a, b) {
     if ( ! b) {
