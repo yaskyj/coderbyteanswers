@@ -1,3 +1,49 @@
+//Bracket matcher solution
+function BracketMatcher(str) { 
+  var arr = str.split('');
+  var lPar = [];
+  var rPar = [];
+  for (var i in arr) {
+    if (arr[i].charCodeAt(0) == 40) {
+      lPar.push(arr[i]);
+    }
+    if (arr[i].charCodeAt(0) == 41) {
+      rPar.push(arr[i]);
+    }
+  }
+  if (lPar.length == rPar.length) {
+    return 1;
+  }
+  return 0;        
+}
+//Multiple brackets solution
+function MultipleBrackets(str) { 
+  var arr = str.split('');
+  var lPar = [];
+  var rPar = [];
+  var lBra = [];
+  var rBra = [];
+  for (var i in arr) {
+    if (arr[i].charCodeAt(0) == 40) {
+      lPar.push(arr[i]);
+    }
+    if (arr[i].charCodeAt(0) == 41) {
+      rPar.push(arr[i]);
+    }
+    if (arr[i].charCodeAt(0) == 91) {
+      lBra.push(arr[i]);
+    }
+    if (arr[i].charCodeAt(0) == 93) {
+      rBra.push(arr[i]);
+    }
+  }
+  if (lPar.length == rPar.length && lBra.length == rBra.length) {
+    var lengths = lPar.length + lBra.length;
+    return '1' + " " + lengths;
+  }
+  return 0;        
+}
+
 //Permutation step - another inelegant brute force
 function permutator (input) {
   var set =[];
@@ -42,7 +88,6 @@ function PermutationStep(num) {
   }
   return answer;
 }
-
 //Prime checker solution
 function permutator (input) {
   var set =[];
