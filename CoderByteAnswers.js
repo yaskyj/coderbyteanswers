@@ -1,3 +1,19 @@
+//Triple double
+function TripleDouble(num1,num2) {
+  var arr1 = num1.toString().split('');
+  var arr2 = num2.toString().split('');
+  for (var i = 0; i < arr1.length - 1; i++) {
+    if (arr1[i] == arr1[i+1] && arr1[i] == arr1[i+2]) {
+      for (var e = 0; e < arr2.length; e++) {
+        if (arr2[e] == arr1[i] && arr2[e] == arr2[e+1]) {
+          return 1;
+        }
+      }
+    }
+  }
+  return 0;
+}
+
 //Bracket matcher solution
 function BracketMatcher(str) { 
   var arr = str.split('');
