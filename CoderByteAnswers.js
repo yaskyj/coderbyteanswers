@@ -1,3 +1,14 @@
+//ThreeFiveMultiples
+function ThreeFiveMultiples(num) { 
+  var answer = 0;
+  for (var i = num - 1; i > 0; i--) {
+    if (i%3 == 0 || i%5 == 0) {
+      answer += i;
+    }
+  }
+  return answer;
+}
+
 //Counting minutes
 function checkMinutes(min1, min2) {
   if (min1 == min2) {
