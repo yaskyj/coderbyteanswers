@@ -1,3 +1,52 @@
+//Prime checker solution
+function permutator (input) {
+  var set =[];
+  function permute (arr, data) {
+    var cur, memo = data || [];
+
+    for (var i = 0; i < arr.length; i++) {
+       cur = arr.splice(i, 1)[0];
+       if (arr.length === 0) set.push(memo.concat([cur]));
+       permute(arr.slice(), memo.concat([cur]));
+       arr.splice(i, 0, cur);
+    }
+    return set;
+ }
+ return permute(input);
+}
+
+function PrimeTime(num) { 
+  if (num % 2 == 0 && num > 2) {
+    return false;
+  } 
+  for (var i = 3; i < Math.round(Math.sqrt(num)) + 1; i++) {
+    if (num % i == 0) {
+      return false;
+    }
+  }
+  return true;
+         
+}
+
+function PrimeChecker(num) { 
+  var arr = num.toString().split('');
+  var perms = permutator(arr);
+  var final = [];
+  for (var i in perms) {
+    var string = '';
+    for (var e in perms[i]) {
+      string += perms[i][e]
+    }
+    final.push(string);
+  }
+  for (var i in final) {
+    if (PrimeTime(final[i])) {
+      return 1;
+    }
+  }
+  return 0;
+}
+
 //Number Encoding - pretty quick and easy
 function NumberEncoding(str) {
   var strArray = str.split('');
