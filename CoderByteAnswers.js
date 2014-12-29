@@ -1,3 +1,13 @@
+//Number Encoding - pretty quick and easy
+function NumberEncoding(str) {
+  var strArray = str.split('');
+  for (var i in strArray) {
+    if (strArray[i].charCodeAt(0) >= 97 && strArray[i].charCodeAt(0) <= 122) {
+      strArray[i] = strArray[i].charCodeAt(0) - 96;
+    }
+  } 
+  return strArray.join('');        
+}
 //Coin determiner - it's so inelegant, but I'm so sleepy
 function CoinDeterminer(num) {
   count = 0;
