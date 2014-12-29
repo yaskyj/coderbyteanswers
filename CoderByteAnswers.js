@@ -1,3 +1,28 @@
+//StringScramble - it's a bit crude
+function StringScramble(str1,str2) { 
+  var firstArr = str1.match(/([a-zA-Z]+)/g);
+  var secondArr = str2.match(/([a-zA-Z]+)/g);
+  var firstLetters = firstArr.join('');
+  firstArr = firstLetters.split('').sort();
+  var secondLetters = secondArr.join('');
+  secondArr = secondLetters.split('').sort();
+  var ansArr = [];
+  for (var i in secondArr) {
+    for (var e in firstArr) {
+      if (firstArr[e] == secondArr[i]) {
+        ansArr.push(firstArr[e]);
+        break;
+      }
+    }
+  }
+  if (ansArr.join('') == secondArr.join('')) {
+    return true;
+  } else{
+    return false;
+  }
+  
+}
+
 //Run Length
 function RunLength(str) { 
   var theArray = str.split('');
