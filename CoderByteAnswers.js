@@ -1,3 +1,48 @@
+//Permutation step - another inelegant brute force
+function permutator (input) {
+  var set =[];
+  function permute (arr, data) {
+    var cur, memo = data || [];
+
+    for (var i = 0; i < arr.length; i++) {
+       cur = arr.splice(i, 1)[0];
+       if (arr.length === 0) set.push(memo.concat([cur]));
+       permute(arr.slice(), memo.concat([cur]));
+       arr.splice(i, 0, cur);
+    }
+    return set;
+ }
+ return permute(input);
+}
+
+function PermutationStep(num) { 
+  var arr = num.toString().split('');
+  var perms = permutator(arr);
+  var final = [];
+  for (var i in perms) {
+    var string = '';
+    for (var e in perms[i]) {
+      string += perms[i][e]
+    }
+    final.push(string);
+  }
+  for (var i in final) {
+    final[i] = Number(final[i]);    
+  }
+  var answer = 0;
+  for (var i in final) {
+    if (answer == 0 && final[i] > num) {
+      answer = final[i]      
+    } else if (final[i] > num && final[i] < answer) {
+      answer = final[i];
+    }
+  }
+  if (answer == 0) {
+    return -1
+  }
+  return answer;
+}
+
 //Prime checker solution
 function permutator (input) {
   var set =[];
