@@ -1,3 +1,11 @@
+//Binary converter - this felt like cheating
+function BinaryConverter(str) { 
+
+  // code goes here  
+  return parseInt(str, 2);
+         
+}
+
 //StringScramble - it's a bit crude
 function StringScramble(str1,str2) { 
   var firstArr = str1.match(/([a-zA-Z]+)/g);
