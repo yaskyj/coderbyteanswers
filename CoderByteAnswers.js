@@ -1,3 +1,74 @@
+//Most free time - what a giant use of my free time
+//and to not even get all test cases correct
+function MinuteDifference(num1, num2) {
+  return ((num2-num1)/1000)/60;  
+}
+function SplitTimes(strArr) {
+  var timeArr = strArr.split('-');
+  var date = '2014-12-25T';
+  var ansArr = [];
+  for (var i in timeArr) {
+    var partDay = timeArr[i].slice(5, 7);
+    var minute = timeArr[i].slice(3, 5);
+    var hour = timeArr[i].slice(0,2);
+    if (partDay == 'PM') {
+      if (hour != 12) {
+        ansArr.push(Date.parse(date + (Number(hour)+12).toString() + ':' + minute)); 
+      } else {
+        ansArr.push(Date.parse(date + (Number(hour)).toString() + ':' + minute));
+      }
+    } else {
+      //return date + hour + ':' + minute;
+      ansArr.push(Date.parse(date + hour + ':' + minute));
+    }
+  }
+  return ansArr;
+}
+function MostFreeTime(strArr) {
+  var allTimeArr = [];
+  var indTimes = [];
+  for (var i in strArr) {
+    allTimeArr.push(SplitTimes(strArr[i]));
+  }
+  for (var i in allTimeArr) {
+    for (var e in allTimeArr[i]) {
+      indTimes.push(allTimeArr[i][e]);
+    }    
+  }
+  var actMinutes = [];
+  for (var i in allTimeArr) {
+    actMinutes.push(MinuteDifference(allTimeArr[i][0], allTimeArr[i][1]));
+  }
+  var totalActMins = 0;
+  for (var i in actMinutes) {
+    totalActMins += actMinutes[i];
+  }
+  indTimes.sort(function(a, b) {return a-b});
+  var totalMinutes = MinuteDifference(indTimes[0], indTimes[indTimes.length - 1]);
+  var freeMinArr = [];
+  var count = 0;
+  var num = 1;
+  while (count < 2) {
+    freeMinArr.push(MinuteDifference(indTimes[num], indTimes[num+1]));
+    num += 2;
+    count++;
+  }
+  freeMinArr.sort(function(a, b) {return a-b});
+  var hourStr = '';
+  var minStr = '';
+  if (Math.floor((freeMinArr[freeMinArr.length-1]/60)) < 10) {
+    hourStr = '0' + Math.floor((freeMinArr[freeMinArr.length-1]/60)).toString();
+  } else {
+    hourStr = Math.floor((freeMinArr[freeMinArr.length-1]/60)).toString();
+  }
+  if (Math.floor((freeMinArr[freeMinArr.length-1]%60)) < 10) {
+    minStr = '0' + Math.floor((freeMinArr[freeMinArr.length-1]%60)).toString();
+  } else {
+    minStr = Math.floor((freeMinArr[freeMinArr.length-1]%60)).toString();
+  }
+  return hourStr + ':' + minStr;
+}
+
 //Look say sequence - actually the exact same answer as RunLength
 function LookSaySequence(num) { 
   var theArray = num.toString().split('');
