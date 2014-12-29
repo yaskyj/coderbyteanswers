@@ -1,3 +1,25 @@
+//Look say sequence - actually the exact same answer as RunLength
+function LookSaySequence(num) { 
+  var theArray = num.toString().split('');
+  var ansArray = [];
+  count = 1;
+  for (var i = 0; i < theArray.length; i++) {
+    if (theArray[i] == theArray[i+1] && theArray[i] !== theArray[i-1]) {
+      count++;
+    } else if (theArray[i] == theArray[i+1] && theArray[i] == theArray[i-1]) {
+      count++;
+    } else if (theArray[i] !== theArray[i+1] && theArray[i] == theArray[i-1]) {
+      ansArray.push(count);
+      ansArray.push(theArray[i]);
+      count = 1;
+    } else {
+      ansArray.push(count);
+      ansArray.push(theArray[i]);
+    }
+  }
+  return ansArray.join('');
+}
+
 //Triple double
 function TripleDouble(num1,num2) {
   var arr1 = num1.toString().split('');
