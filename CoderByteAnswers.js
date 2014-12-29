@@ -1,3 +1,35 @@
+//Coin determiner - it's so inelegant, but I'm so sleepy
+function CoinDeterminer(num) {
+  count = 0;
+  while (num > 0) {
+    if (num >= 11) {
+      count++;
+      num -= 11;
+      continue;
+    }
+    if (num >= 9) {
+      count++;
+      num -= 9;
+      continue;
+    }
+    if (num >= 7) {
+      count++;
+      num -= 7;
+      continue;
+    }
+    if (num >= 5) {
+      count++;
+      num -= 5;
+      continue;
+    }
+    if (num >= 1) {
+      count++;
+      num -= 1;
+      continue;
+    }
+  }
+  return count;
+}
 //medium division strings
 function formatNumber (num) {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
