@@ -1,3 +1,26 @@
+//Greatest common factor
+function gcd(a, b) {
+    if ( ! b) {
+        return a;
+    }
+    return gcd(b, a % b);
+}
+function Division(num1,num2) { 
+  return gcd(num1, num2); 
+}
+
+//Distinct List
+function DistinctList(arr) { 
+  arr.sort(function(a, b){return a-b});
+  var count = 0;
+  for (var i = 0; i < arr.length - 1; i++ ) {
+    if (arr[i] == arr[i+1]) {
+      count++;
+    }
+  }  
+  return count; 
+         
+}
 //ThreeFiveMultiples
 function ThreeFiveMultiples(num) { 
   var answer = 0;
