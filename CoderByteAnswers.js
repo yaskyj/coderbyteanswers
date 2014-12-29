@@ -1,3 +1,29 @@
+//medium division strings
+function formatNumber (num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+}
+function FormattedDivision(num1,num2) { 
+  var num = (num1/num2).toFixed(4);
+  var numbers = num.split('.');
+  return formatNumber(numbers[0]) + '.' + numbers[1];
+}
+
+//easy division strings
+function DivisionStringified(num1,num2) {
+  var num = Math.round(num1/num2);
+  var stringed = num.toString();      
+  if (stringed.length < 4) {
+    return stringed;
+  }
+  if (stringed.length > 3 && stringed.length < 6) {
+    return Math.floor(num/1000).toString() + ',' + (num%1000).toString();
+  }
+  if (stringed.length > 5 && stringed.length < 9) {
+    return Math.floor(num/1000000).toString() + ',' + Math.floor(num%1000000/1000).toString() + ',' + (num%1000).toString();
+  }
+}
+   
+
 //Binary converter - this felt like cheating
 function BinaryConverter(str) { 
 
