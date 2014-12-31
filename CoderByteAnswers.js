@@ -1,3 +1,36 @@
+//Gas Station
+function GasStation(strArr) { 
+  var stops = strArr.slice(0,1);
+  var stops = Number(stops);
+  var stations = strArr.slice(1);
+  for (var i in stations) {
+    stations[i] = stations[i].split(':');
+    stations[i][0] = Number(stations[i][0]);
+    stations[i][1] = Number(stations[i][1]);
+  }
+  var count = 0;
+  while (count < stations.length) {
+    var gasTotal = 0;
+    var count2 = 0;
+    for (var i = 0; i < stations.length; i++) {
+      if (gasTotal + stations[i][0] >= stations[i][1]) {
+        gasTotal += (stations[i][0] - stations[i][1]);
+        count2++
+      } else {
+        break;
+      }
+    }
+    if (count2 ==stations.length && gasTotal >= 0) {
+      return count + 1;
+    }
+    var first = stations[0];
+    stations = stations.slice(1);
+    stations.push(first);
+    count++
+  }
+  return 'impossible';      
+}
+
 //Knights jumps
 function KnightJumps(str) { 
   str = str.match(/(\d \d)/g).toString();
