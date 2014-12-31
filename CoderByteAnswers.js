@@ -323,6 +323,7 @@ function NumberEncoding(str) {
   } 
   return strArray.join('');        
 }
+
 //Coin determiner - it's so inelegant, but I'm so sleepy
 function CoinDeterminer(num) {
   count = 0;
@@ -384,7 +385,6 @@ function DivisionStringified(num1,num2) {
 //Binary converter - this felt like cheating
 function BinaryConverter(str) { 
 
-  // code goes here  
   return parseInt(str, 2);
          
 }
@@ -695,11 +695,17 @@ function PrimeMover(num) {
 //Caesar cypher
 function CaesarCipher(str, num) { 
   var output = "";
-    for (var i = 0; i < str.length; i++) {
+  for (var i = 0; i < str.length; i++) {
     var c = str.charCodeAt(i);
-    if      (c >= 65 && c <=  90) output += String.fromCharCode((c - 65 + num) % 26 + 65);  // Uppercase
-    else if (c >= 97 && c <= 122) output += String.fromCharCode((c - 97 + num) % 26 + 97);  // Lowercase
-    else                          output += str.charAt(i);  // Copy
+    if (c >= 65 && c <=  90) {
+      output += String.fromCharCode((c - 65 + num) % 26 + 65);   
+    }
+    else if (c >= 97 && c <= 122) {
+    output += String.fromCharCode((c - 97 + num) % 26 + 97);
+    }
+    else {
+      output += str.charAt(i);
+    }
   }
   return output;
 }
