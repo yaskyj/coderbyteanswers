@@ -1,3 +1,37 @@
+//Knights jumps
+function KnightJumps(str) { 
+  str = str.match(/(\d \d)/g).toString();
+  var arr = str.split(' ');
+  arr[0] = Number(arr[0]);
+  arr[1] = Number(arr[1]);
+  var count = 0;
+  if (arr[0] + 2 <= 8 && arr[1] + 1 <= 8) {
+    count++;
+  } 
+  if (arr[0] + 1 <= 8 && arr[1] + 2 <= 8) {
+    count++;
+  }
+  if (arr[0] - 2 >= 1 && arr[1] - 1 >= 1) {
+    count++;
+  }
+  if (arr[0] - 1 >= 1 && arr[1] - 2 >= 1) {
+    count++;
+  }
+  if (arr[0] - 1 >= 1 && arr[1] + 2 <= 8) {
+    count++;   
+  }
+  if (arr[0] - 2 >= 1 && arr[1] + 1 <= 8) {
+    count++;
+  }
+  if (arr[0] + 1 <= 8 && arr[1] - 2 >= 1) {
+    count++;
+  }
+  if (arr[0] + 2 <= 8 && arr[1] - 1 >= 1) {
+    count++;
+  }
+  return count;         
+}
+
 //Most free time - what a giant use of my free time
 //and to not even get all test cases correct
 function MinuteDifference(num1, num2) {
