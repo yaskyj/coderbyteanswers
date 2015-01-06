@@ -1,3 +1,33 @@
+//ShortestPath
+function ShortestPath(strArr) {
+  var nodeCount = Number(strArr[0]),
+      nodes = strArr.slice(1, nodeCount + 1),
+      first = nodes[0],
+      last = nodes[nodes.length -1],
+      connects = strArr.slice(nodeCount+1).map(function(arr) {return arr.split('-')}),
+      paths = [];
+  function findPath(start, path) {
+    path = path || first;
+    for (var i = 1; i < connects.length; i++) {
+        if (start === connects[i][0] && connects[i][1] === last) {
+          paths.push(path + '-' + last);
+        } else if (start === connects[i][1] && connects[i][0] === last) {
+          paths.push(path + '-' + start);
+        } else if (start == connects[i][0]) {
+          findPath(connects[i][1], path.concat('-' + connects[i][1]))
+        }
+    }
+  }
+  console.log(paths);
+  findPath(first);
+  return paths.length < 1 ? -1 : paths.sort(function(a,b) {return b.length - a.length}).pop();
+
+}
+
+"6","Z","B","C","A","Y","Q","B-C","A-B","A-Z","C-Y","Z-Y","C-Q"
+"9","Z","B","C","D","R","A","Y","Q","E","A-Z","A-R","Z-Y","Z-C","C-B","Y-Q","Q-D","D-E","R-E"
+"5","N1","N2","N3","N4","N5","N1-N3","N3-N4","N4-N5","N5-N2","N2-N1"
+
 //Gas Station
 function GasStation(strArr) { 
   var stops = strArr.slice(0,1);
